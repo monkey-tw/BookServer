@@ -24,4 +24,9 @@ public class BookService {
         return new ArrayList<>(books.values());
     }
 
+    public Book addBook(Book book) {
+        book.setId(UUID.randomUUID().toString());
+        books.put(book.getId(), book);
+        return book;
+    }
 }
