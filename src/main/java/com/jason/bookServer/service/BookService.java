@@ -29,4 +29,20 @@ public class BookService {
         books.put(book.getId(), book);
         return book;
     }
+
+    public Book updateBook(String id, Book book) {
+        System.out.print("updateBook:");
+        System.out.print(id);
+        System.out.print(book);
+        if (books.containsKey(id)) {
+            Book updatedBook = books.get(id);
+            updatedBook.setTitle(book.getTitle());
+            updatedBook.setAuthor(book.getAuthor());
+            updatedBook.setPublicationYear(book.getPublicationYear());
+            updatedBook.setIsbn(book.getIsbn());
+            books.put(id, updatedBook);
+            return updatedBook;
+        }
+        return null;
+    }
 }

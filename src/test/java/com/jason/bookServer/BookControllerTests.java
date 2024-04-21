@@ -76,4 +76,21 @@ class BookControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.title").value("New Book"));
     }
+
+    @Test
+    void testUpdateBook() throws Exception {
+        // Arrange
+        String bookId = "1";
+        Book book = new Book();
+        book.setId(bookId);
+        book.setTitle("Updated Book Title");
+
+        when(bookService.updateBook(bookId, book)).thenReturn(book);
+
+        // Act & Assert
+        mockMvc.perform(put("/books/" + bookId)
+                        .contentType("application/json")
+                        .content("{ \"title\": \"Updated Book Title\" }"))
+                .andExpect(status().isOk());
+    }
 }
