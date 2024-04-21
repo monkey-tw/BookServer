@@ -93,4 +93,20 @@ class BookControllerTest {
                         .content("{ \"title\": \"Updated Book Title\" }"))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    void testDeleteBook() throws Exception {
+        // Arrange
+        String bookId = "1";
+        Book book = new Book();
+        book.setId(bookId);
+        book.setTitle("Deleted Book Title");
+
+        when(bookService.deleteBook(bookId)).thenReturn(book);
+
+        // Act & Assert
+        mockMvc.perform(delete("/books/" + bookId))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.title").value("Deleted Book Title"));
+    }
 }

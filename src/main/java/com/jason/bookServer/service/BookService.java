@@ -45,4 +45,10 @@ public class BookService {
         }
         return null;
     }
+
+    public Book deleteBook(String id) {
+        Book book = books.get(id);
+        books.remove(id);
+        return book;
+    }
 }
