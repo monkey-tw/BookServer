@@ -79,4 +79,27 @@ class BookServiceTest {
         bookService.deleteBook(testBook.getId());
         verify(bookRepository).deleteById(testBook.getId());
     }
+
+    @Test
+    void testUpdateBook() {
+        // Arrange
+        Book updatedBook = new Book();
+        updatedBook.setTitle("红楼梦");
+        updatedBook.setAuthor("曹雪芹");
+        updatedBook.setPublicationYear("1791");
+        updatedBook.setIsbn("987-654-321");
+
+        when(bookRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(testBook));
+        when(bookRepository.save(any(Book.class))).thenReturn(updatedBook);
+
+        // Act & Assert
+        Book result = bookService.updateBook(testBook.getId(), updatedBook);
+        assertNotNull(result);
+        assertEquals("红楼梦", result.getTitle());
+        assertEquals("曹雪芹", result.getAuthor());
+        assertEquals("1791", result.getPublicationYear());
+        assertEquals("987-654-321", result.getIsbn());
+        verify(bookRepository).save(any(Book.class));
+    }
+
 }
