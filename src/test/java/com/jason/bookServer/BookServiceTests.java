@@ -60,4 +60,16 @@ class BookServiceTest {
         assertNotNull(book);
         assertEquals(testBook, book);
     }
+
+    @Test
+    void testAddBook() {
+        // Arrange
+        when(bookRepository.save(any(Book.class))).thenReturn(testBook);
+
+        // Act & Assert
+        Book addedBook = bookService.addBook(testBook);
+        assertNotNull(addedBook);
+        assertEquals(testBook, addedBook);
+        verify(bookRepository).save(any(Book.class));
+    }
 }
