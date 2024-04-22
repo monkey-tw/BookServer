@@ -20,3 +20,6 @@ Clone Backend project via: `git clone https://github.com/monkey-tw/BookServer.gi
 
 # Test BookApp
 - After you run Backend project, you can test BookApp via iOS simulator
+
+# Database
+Based on H2 database.
