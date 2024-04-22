@@ -50,4 +50,14 @@ class BookServiceTest {
         assertEquals(testBook, books.get(0));
     }
 
+    @Test
+    void testGetBookById() {
+        // Arrange
+        when(bookRepository.findById(anyString())).thenReturn(Optional.of(testBook));
+
+        // Act & Assert
+        Book book = bookService.getBookById(testBook.getId());
+        assertNotNull(book);
+        assertEquals(testBook, book);
+    }
 }
