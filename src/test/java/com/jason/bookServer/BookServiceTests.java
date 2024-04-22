@@ -72,4 +72,11 @@ class BookServiceTest {
         assertEquals(testBook, addedBook);
         verify(bookRepository).save(any(Book.class));
     }
+
+    @Test
+    void testDeleteBook() {
+        // Act & Assert
+        bookService.deleteBook(testBook.getId());
+        verify(bookRepository).deleteById(testBook.getId());
+    }
 }
