@@ -1,6 +1,11 @@
 package com.jason.bookServer.data;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "books")
 public class Book {
+    @Id
     private String id;
     private String title;
     private String author;
