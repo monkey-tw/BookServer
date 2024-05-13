@@ -7,9 +7,9 @@
 Clone Backend project via: `git clone https://github.com/monkey-tw/BookServer.git`
 
 # Run Application In AWS
-The application is running in AWS.The public IP is http://3.27.26.5 . 
+The application is running in AWS.The public IP is http://3.27.66.117 . 
 
-eg: You can access book list page via: `http://3.27.26.5:8080/books`
+eg: You can access book list page via: `http://3.27.66.117:8080/books`
 
 # Run Backend project locally with Docker
 - Open terminal and run: `cd BookServer`
